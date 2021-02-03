@@ -15,7 +15,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 
 namespace AuditChecklistModule
 {
@@ -35,10 +34,7 @@ namespace AuditChecklistModule
             
             services.AddScoped<IChecklistService, ChecklistService>();
             services.AddScoped<IChecklistRepo, ChecklistRepo>();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AuditChecklist API", Version = "v1" });
-            });
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -63,11 +59,6 @@ namespace AuditChecklistModule
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "AuditChecklist");
-            });
 
             app.UseRouting();
             app.UseAuthentication();
