@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: auditchecklist-service-deployment
   labels:
-    app: AuditChecklist-Service
+    app: AuditChecklistModule
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: AuditChecklist-Service  
+      app: AuditChecklistModule
   template:
     metadata:
       labels:
-        app: AuditChecklist-Service
+        app: AuditChecklistModule
     spec:
       containers:
       - name: checklistcontainerinst
